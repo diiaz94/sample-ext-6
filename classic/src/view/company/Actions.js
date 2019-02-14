@@ -17,11 +17,15 @@ Ext.define('Mvvm.app.view.company.Actions', {
 		},
 		pack: 'end'
 	},
+    viewModel: 'company',
 	border: false,
 	items: [{
 		xtype: 'button',
 		text: 'Crear',
 		itemId: 'add',
+		bind: {
+            hidden: '{!canCreate}' 
+        },
 		listeners: {
 	        click: 'onAddClick'
 	    }
@@ -29,18 +33,19 @@ Ext.define('Mvvm.app.view.company.Actions', {
 		xtype: 'button',
 		text: 'Editar',
 		itemId: 'edit',
-		hidden: true,
 		bind: {
-            hidden: '{!canUpdate}' 
+            hidden: '{!canEdit}' 
         },
 		listeners: {
-	        click: 'onUpdateClick'
+	        click: 'onEditClick'
 	    }
 	}, {
 		xtype: 'button',
 		text: 'Eliminar',
 		itemId: 'delete',
-		hidden: true,
+		bind: {
+            hidden: '{!canDelete}' 
+        },
 		listeners: {
 	        click: 'onDeleteClick'
 	    }

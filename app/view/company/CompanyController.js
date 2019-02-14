@@ -10,11 +10,17 @@ Ext.define('Mvvm.app.view.company.CompanyController', {
     alias: 'controller.company',
 
 
-    onAddClick: function (a,b,c){
+    onAddClick: function (){
         debugger;
     },
-    onUpdateClick: function (a,b,c){
-        debugger;
+    onEditClick: function (a,b,c){
+        var win = Ext.create('Mvvm.app.view.company.Form');
+        win.setTitle("Editar Registro");
+        var form = win.down('form');
+        var record = this.getView().down("grid").getSelectionModel().getLastSelected();
+        form.loadRecord(record);
+        /*var main = Ext.ComponentQuery.query("app-main")[0];
+        main.getViewModel().set("company",record);*/
     },
     onDeleteClick: function (a,b,c){
         debugger;
@@ -22,14 +28,10 @@ Ext.define('Mvvm.app.view.company.CompanyController', {
      onDeleteClick: function (a,b,c){
         debugger;
     },
-    onItemSelected: function (sender, record) {
-        //Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
-        var win = Ext.create('Mvvm.app.view.main.Form');
-        win.setTitle("Editar Registro");
-        var form = win.down('form');
-        form.loadRecord(record);
-        var main = Ext.ComponentQuery.query("app-main")[0];
-        main.getViewModel().set("company",record);
+    onSelectionChange: function (el, selected, eOpts) {
+        var actions = Ext.ComponentQuery.query("actionslist")[0];
+        actions.getViewModel().set("elementsCount",selected.length);
+        
     },
     onCancelForm: function (btn){
         var win = btn.up('window');

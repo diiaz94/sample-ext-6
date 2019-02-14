@@ -35,6 +35,6 @@ Ext.define('Mvvm.app.view.company.List', {
         emptyMsg: "No hay elementos que mostrar"
     }],
     listeners: {
-        select: 'onItemSelected'
+        selectionchange: 'onSelectionChange'
     }
 });

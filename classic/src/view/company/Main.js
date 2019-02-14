@@ -28,9 +28,11 @@ Ext.define('Mvvm.app.view.company.Main', {
     },
     controller: 'company',
     viewModel: 'company',
+
     layout: 'ux.center',
     border: false,
     items: [{
+        itemId:"test",
         xtype: 'panel', 
         width: '80%',
         border: false,
@@ -39,5 +41,8 @@ Ext.define('Mvvm.app.view.company.Main', {
         }, {
              xtype: 'companieslist'
         }]
-    }]
+    }],
+    listener:{
+        render: 'onCompaniesRender'
+    }
 });

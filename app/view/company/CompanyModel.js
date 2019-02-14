@@ -8,9 +8,19 @@ Ext.define('Mvvm.app.view.company.CompanyModel', {
 
     data: {
     	title: "Compañias",
-        emptyText: 'Oprime el botón crear para añadir datos',
-        canUpdate:false,
-        company:{}
-	}
+        elementsCount:0,
+        emptyText: 'Oprime el botón crear para añadir datos'
+	},
+	formulas: {
+        canCreate: function(get) {
+            return get('elementsCount') == 0;
+        },
+        canEdit: function(get) {
+            return get('elementsCount') == 1;
+        },
+        canDelete: function(get) {
+            return get('elementsCount') > 0;
+        },
+    }
     //TODO - add data, formulas and/or methods to support your view
 });
