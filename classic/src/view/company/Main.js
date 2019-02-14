@@ -5,20 +5,16 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
-Ext.define('Mvvm.app.view.main.Main', {
+Ext.define('Mvvm.app.view.company.Main', {
     extend: 'Ext.Panel',
-    xtype: 'app-main',
+    xtype: 'companies',
 
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
-
         'Mvvm.app.view.company.CompanyController',
         'Mvvm.app.view.company.CompanyModel',
     ],
-
-    controller: 'main',
-    viewModel: 'main',
 
     header: {
         layout: {
@@ -28,9 +24,10 @@ Ext.define('Mvvm.app.view.main.Main', {
             bind: {
                 text: '{title}'
             }
-        },
-        iconCls: 'fa-th-list'
+        }
     },
+    controller: 'company',
+    viewModel: 'company',
     layout: 'ux.center',
     border: false,
     items: [{
@@ -38,7 +35,9 @@ Ext.define('Mvvm.app.view.main.Main', {
         width: '80%',
         border: false,
         items: [ {
-            xtype: 'companies'
+            xtype: 'actionslist'
+        }, {
+             xtype: 'companieslist'
         }]
     }]
 });
